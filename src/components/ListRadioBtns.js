@@ -6,10 +6,6 @@ import RadioButton from "./RadioButton";
 import spacing from "../css/spacing";
 import ErrorMsg from "./ErrorMsg";
 
-const radioBtnCss = css`
-  padding: ${spacing.space2};
-`;
-
 function ListRadioBtns({
   field: { name, value, onChange },
   question: { id, options },
@@ -25,7 +21,9 @@ function ListRadioBtns({
         {options.map(option => (
           <li key={id}>
             <RadioButton
-              css={radioBtnCss}
+              className={css`
+                padding: ${spacing.space2};
+              `}
               handleChange={onChange}
               name={name}
               value={option}
