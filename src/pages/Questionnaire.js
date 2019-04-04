@@ -1,9 +1,13 @@
 import React, { Component } from "react";
+import { Field } from "formik";
 import { connect } from "react-redux";
 import { css } from "@emotion/core";
 import { setProgressStatus } from "./Questionnaire.state";
 import ProgressBar from "../components/ProgressBar";
 import Wizard from "../components/WizardForm";
+import FieldSet from "../components/FieldSet";
+import TextArea from "../components/TextArea";
+import ListRadioBtns from "../components/ListRadioBtns";
 
 const dummyPayload = {
   title: "This is a title for the form Header",
@@ -28,6 +32,13 @@ const dummyPayload = {
       prompt: "What is your third answer?",
       is_required: true,
       min_char_length: 1
+    },
+    {
+      id: 2501,
+      question_type: "SelectQuestion",
+      prompt: "What is your fourth answer?",
+      is_required: false,
+      options: ["option-1", "option-2", "option-3", "option-4"]
     }
   ]
 };
@@ -56,6 +67,23 @@ class Questionnaire extends Component {
     );
   };
 
+  formControlSelector = type => {
+    let component;
+    switch (type) {
+      case "TextQuestion":
+        component = TextArea;
+        break;
+      case "SelectQuestion":
+        component = ListRadioBtns;
+        break;
+
+      default:
+        break;
+    }
+
+    return component;
+  };
+
   render() {
     const { title, questions } = dummyPayload;
 
@@ -80,19 +108,15 @@ class Questionnaire extends Component {
           {questions.map(question => (
             <Wizard.Page
               // validate={validator(question.name)}
-              key={question.name}
+              key={question.id}
             >
-              {question}
-              {/* <FieldSet
-                style={{ minHeight: "28em" }}
-                legend={question.description}
-              >
+              <FieldSet style={{ minHeight: "28em" }} legend={question.prompt}>
                 <Field
-                  name={question.name}
-                  component={ListRadioBtns}
-                  questions={question.answers}
+                  name={question.id}
+                  component={this.formControlSelector(question.question_type)}
+                  question={question}
                 />
-              </FieldSet> */}
+              </FieldSet>
             </Wizard.Page>
           ))}
         </Wizard>

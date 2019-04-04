@@ -27,7 +27,7 @@ function PrevAndNextBtn({
       <Container>
         <OptionallyDisplayed display={showBackBtn}>
           <Button
-            className={css`
+            css={css`
               position: absolute;
               left: -7em;
               top: 0.25em;

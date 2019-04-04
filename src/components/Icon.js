@@ -10,7 +10,8 @@ const defaultSvgCss = css`
 function Icon({ icon, color, size = 24, className }) {
   return (
     <svg
-      css={["icon", defaultSvgCss, className]}
+      css={[defaultSvgCss, className]}
+      className="icon"
       width={size}
       height={size}
       viewBox="0 0 24 24"

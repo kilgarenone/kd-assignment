@@ -43,7 +43,7 @@ const ButtonWithSpinner = ({
     {isSubmitting ? progressText : children}
     {isSubmitting ? (
       <Spinner
-        className={css`
+        css={css`
           position: absolute;
           top: 50%;
           right: 10%;
@@ -52,7 +52,7 @@ const ButtonWithSpinner = ({
     ) : (
       <Icon
         size="30"
-        className={css`
+        css={css`
           right: -8px;
         `}
         icon={ICONS.ARROW_RIGHT}
