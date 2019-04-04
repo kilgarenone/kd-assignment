@@ -23,7 +23,13 @@ function PrevAndNextBtn({
   isLastPage
 }) {
   return (
-    <Container xAlign="center" css={[cont, className]}>
+    <Container
+      xAlign="center"
+      className={css`
+        ${cont};
+        ${className}
+      `}
+    >
       <Container>
         <OptionallyDisplayed display={showBackBtn}>
           <Button

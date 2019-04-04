@@ -1,6 +1,8 @@
 import { Formik } from "formik";
 import React, { Component } from "react";
+import { css } from "@emotion/core";
 import PrevAndNextBtn from "./PrevAndNextBtn";
+import spacing from "../css/spacing";
 
 class Wizard extends Component {
   static Page = ({ children }) => children;
@@ -79,7 +81,16 @@ class Wizard extends Component {
         onSubmit={this.handleSubmit}
       >
         {({ handleSubmit, isSubmitting }) => (
-          <form id={idForFormEl} onSubmit={handleSubmit}>
+          <form
+            css={css`
+              flex: 1 1 auto;
+              display: flex;
+              flex-direction: column;
+              padding-top: ${spacing.space2};
+            `}
+            id={idForFormEl}
+            onSubmit={handleSubmit}
+          >
             {activePage}
             <PrevAndNextBtn
               className={prevAndNextBtnClassName}

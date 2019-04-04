@@ -74,7 +74,15 @@ class Questionnaire extends Component {
     const { title, questions } = dummyPayload;
 
     return (
-      <>
+      <main
+        css={css`
+          max-width: 600px;
+          margin: 0 auto;
+          display: flex;
+          flex-direction: column;
+          height: 100vh;
+        `}
+      >
         <h1>{title}</h1>
         <ProgressBar width={this.props.progressStatus} />
         <Wizard
@@ -89,6 +97,7 @@ class Questionnaire extends Component {
           idForFormEl="questionnaire-forms"
           prevAndNextBtnClassName={css`
             top: -3.5em;
+            margin-top: auto;
           `}
         >
           {questions.map(question => (
@@ -96,7 +105,12 @@ class Questionnaire extends Component {
               // validate={validator(question.name)}
               key={question.id}
             >
-              <FieldSet style={{ minHeight: "28em" }} legend={question.prompt}>
+              <FieldSet
+                css={css`
+                  flex: 1 1 auto;
+                `}
+                legend={question.prompt}
+              >
                 <Field
                   name={question.id}
                   component={this.formControlSelector(question.question_type)}
@@ -106,7 +120,7 @@ class Questionnaire extends Component {
             </Wizard.Page>
           ))}
         </Wizard>
-      </>
+      </main>
     );
   }
 }
