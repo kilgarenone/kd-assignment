@@ -34,9 +34,9 @@ function buildWrapperStyles(xAlign, yAlign, isColumn) {
   return {
     position: "relative",
     display: "flex",
-    "flex-direction": flexDirection, // default is 'row'
-    "align-items": alignItems, // default is 'stretch'
-    "justify-content": justifyContent // default is 'flex-start'
+    flexDirection, // default is 'row'
+    alignItems, // default is 'stretch'
+    justifyContent // default is 'flex-start'
   };
 }
 
