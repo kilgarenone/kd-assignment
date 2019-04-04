@@ -16,27 +16,13 @@ const dummyPayload = {
       id: 2447,
       question_type: "TextQuestion",
       prompt: "What is your first answer?",
-      is_required: false,
+      is_required: true,
       min_char_length: 15
-    },
-    {
-      id: 2448,
-      question_type: "TextQuestion",
-      prompt: "What is your second answer?",
-      is_required: true,
-      min_char_length: 100
-    },
-    {
-      id: 2500,
-      question_type: "TextQuestion",
-      prompt: "What is your third answer?",
-      is_required: true,
-      min_char_length: 1
     },
     {
       id: 2501,
       question_type: "SelectQuestion",
-      prompt: "What is your fourth answer?",
+      prompt: "What is your second answer?",
       is_required: false,
       options: ["option-1", "option-2", "option-3", "option-4"]
     }
