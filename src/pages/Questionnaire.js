@@ -27,7 +27,12 @@ const dummyPayload = {
       question_type: "SelectQuestion",
       prompt: "What is your second answer?",
       is_required: false,
-      options: ["option-1", "option-2", "option-3", "option-4"]
+      options: [
+        { id: 1, prompt: "option-1" },
+        { id: 2, prompt: "option-2" },
+        { id: 3, prompt: "option-3" },
+        { id: 4, prompt: "option-4" }
+      ]
     }
   ]
 };
@@ -94,7 +99,7 @@ class Questionnaire extends Component {
         <ProgressBar width={this.props.progressStatus} />
         <Wizard
           initialValues={initialValues}
-          // validationSchema={validationSchema}
+          validationSchema={validationSchema}
           onSubmit={this.handleSubmit}
           setProgressBarWidth={this.setProgressBarWidth}
           idForFormEl="questionnaire-forms"
