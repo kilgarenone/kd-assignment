@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Field } from "formik";
+import * as Yup from "yup";
+import { Field, ErrorMessage } from "formik";
 import { connect } from "react-redux";
 import { css } from "@emotion/core";
 import { setProgressStatus } from "./Questionnaire.state";
@@ -8,6 +9,8 @@ import Wizard from "../components/WizardForm";
 import FieldSet from "../components/FieldSet";
 import TextArea from "../components/TextArea";
 import ListRadioBtns from "../components/ListRadioBtns";
+import ErrorMsg from "../components/ErrorMsg";
+import spacing from "../css/spacing";
 
 const dummyPayload = {
   title: "This is a title for the form Header",
@@ -16,7 +19,7 @@ const dummyPayload = {
       id: 2447,
       question_type: "TextQuestion",
       prompt: "What is your first answer?",
-      is_required: true,
+      validationRules: [{ is_required: true }],
       min_char_length: 15
     },
     {
@@ -29,19 +32,22 @@ const dummyPayload = {
   ]
 };
 
-const validator = fieldName => values => {
-  const errors = {};
-  if (!values[fieldName]) {
-    errors[fieldName] = "Please select one option";
-  }
-  return errors;
-};
+const validationSchema = Yup.object().shape({
+  2447: Yup.string().required("E-mail is required!")
+});
+
+function initialValuesConstructor(questions) {
+  return questions.reduce((acc, curr) => {
+    acc[curr.id] = "";
+    return acc;
+  }, {});
+}
 
 class Questionnaire extends Component {
   state = {};
 
   handleSubmit = surveyResults => {
-    console.log("haha");
+    console.log("haha", surveyResults);
     // this.props.storeQuestionnaireAnswers(surveyResults);
   };
 
@@ -72,6 +78,7 @@ class Questionnaire extends Component {
 
   render() {
     const { title, questions } = dummyPayload;
+    const initialValues = initialValuesConstructor(questions);
 
     return (
       <main
@@ -86,12 +93,8 @@ class Questionnaire extends Component {
         <h1>{title}</h1>
         <ProgressBar width={this.props.progressStatus} />
         <Wizard
-          initialValues={{
-            age: "",
-            riskCapacity: "",
-            timeHorizon: "",
-            riskWillingness: ""
-          }}
+          initialValues={initialValues}
+          // validationSchema={validationSchema}
           onSubmit={this.handleSubmit}
           setProgressBarWidth={this.setProgressBarWidth}
           idForFormEl="questionnaire-forms"
@@ -101,10 +104,7 @@ class Questionnaire extends Component {
           `}
         >
           {questions.map(question => (
-            <Wizard.Page
-              // validate={validator(question.name)}
-              key={question.id}
-            >
+            <Wizard.Page key={question.id}>
               <FieldSet
                 css={css`
                   flex: 1 1 auto;
@@ -115,6 +115,14 @@ class Questionnaire extends Component {
                   name={question.id}
                   component={this.formControlSelector(question.question_type)}
                   question={question}
+                />
+                <ErrorMessage
+                  name={question.id}
+                  component={ErrorMsg}
+                  className={css`
+                    left: ${spacing.space0};
+                  `}
+                  htmlFor="questionnaire-forms"
                 />
               </FieldSet>
             </Wizard.Page>
