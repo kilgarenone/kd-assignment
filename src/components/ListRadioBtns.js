@@ -6,12 +6,12 @@ import spacing from "../css/spacing";
 
 function ListRadioBtns({
   field: { name, value, onChange },
-  question: { id, options },
+  question: { options },
   ...props
 }) {
   return (
     <List>
-      {options.map(option => (
+      {options.map(({ id, prompt }) => (
         <li key={id}>
           <RadioButton
             className={css`
@@ -19,11 +19,11 @@ function ListRadioBtns({
             `}
             handleChange={onChange}
             name={name}
-            value={option}
-            isChecked={option === value}
+            value={prompt}
+            isChecked={prompt === value}
             {...props}
           >
-            {option}
+            {prompt}
           </RadioButton>
         </li>
       ))}
