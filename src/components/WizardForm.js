@@ -40,7 +40,9 @@ class Wizard extends Component {
     ];
 
     const { name } = activePage.props;
-
+    if (!activePage.props.validate) {
+      return {};
+    }
     try {
       activePage.props.validate.validateSync(values[name]);
     } catch (e) {

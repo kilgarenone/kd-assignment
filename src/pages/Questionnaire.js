@@ -19,14 +19,14 @@ const dummyPayload = {
       id: 2447,
       question_type: "TextQuestion",
       prompt: "What is your first answer?",
-      validationRules: [{ is_required: true }],
+      validation_rules: [{ is_required: true }],
       min_char_length: 15
     },
     {
       id: 2501,
       question_type: "SelectQuestion",
       prompt: "What is your second answer?",
-      is_required: false,
+      // validation_rules: [{ is_required: true }],
       options: [
         { id: 1, prompt: "option-1" },
         { id: 2, prompt: "option-2" },
@@ -37,9 +37,25 @@ const dummyPayload = {
   ]
 };
 
-const validationSchema = Yup.object().shape({
-  2447: Yup.string().required("E-mail is required!")
-});
+// const validationSchema = Yup.object().shape({
+//   2447: Yup.string().required("E-mail is required!")
+// });
+
+function validationSchemaConstructor(question) {
+  let schema = Yup.string();
+
+  if (!question.validation_rules) {
+    return null;
+  }
+
+  question.validation_rules.forEach(rule => {
+    if ("is_required" in rule) {
+      schema = schema.required("Hey man nice shot");
+    }
+  });
+  schema = schema.email("email plesss");
+  return schema;
+}
 
 function initialValuesConstructor(questions) {
   return questions.reduce((acc, curr) => {
@@ -99,7 +115,6 @@ class Questionnaire extends Component {
         <ProgressBar width={this.props.progressStatus} />
         <Wizard
           initialValues={initialValues}
-          validationSchema={validationSchema}
           onSubmit={this.handleSubmit}
           setProgressBarWidth={this.setProgressBarWidth}
           idForFormEl="questionnaire-forms"
@@ -109,7 +124,11 @@ class Questionnaire extends Component {
           `}
         >
           {questions.map(question => (
-            <Wizard.Page key={question.id}>
+            <Wizard.Page
+              validate={validationSchemaConstructor(question)}
+              key={question.id}
+              name={question.id}
+            >
               <FieldSet
                 css={css`
                   flex: 1 1 auto;
