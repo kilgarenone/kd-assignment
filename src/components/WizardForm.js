@@ -69,13 +69,19 @@ class Wizard extends Component {
   };
 
   render() {
-    const { children, idForFormEl, prevAndNextBtnClassName } = this.props;
+    const {
+      children,
+      idForFormEl,
+      prevAndNextBtnClassName,
+      validationSchema
+    } = this.props;
     const { page, values } = this.state;
     const activePage = React.Children.toArray(children)[page];
     const isLastPage = page === React.Children.count(children) - 1;
 
     return (
       <Formik
+        validationSchema={validationSchema}
         initialValues={values}
         validate={this.validate}
         onSubmit={this.handleSubmit}
