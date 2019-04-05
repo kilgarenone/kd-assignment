@@ -6,9 +6,9 @@ import ICONS from "../css/icons";
 import Icon from "./Icon";
 
 const defaultCss = css`
-  position: absolute;
+  /* position: absolute;
   bottom: 0;
-  left: 0;
+  left: 0; */
   color: ${colors.error};
   font-size: ${fontSize.subText};
 `;
