@@ -38,7 +38,17 @@ class Wizard extends Component {
     const activePage = React.Children.toArray(this.props.children)[
       this.state.page
     ];
-    return activePage.props.validate ? activePage.props.validate(values) : {};
+
+    const { name } = activePage.props;
+
+    try {
+      activePage.props.validate.validateSync(values[name]);
+    } catch (e) {
+      const error = {};
+      error[name] = e.message;
+      return error;
+    }
+    // return activePage.props.validate ? activePage.props.validate(values) : {};
     // try {
     //   if (!activePage.props.validationSchema) {
     //     return {};
@@ -81,7 +91,7 @@ class Wizard extends Component {
 
     return (
       <Formik
-        validationSchema={validationSchema}
+        // validationSchema={validationSchema}
         initialValues={values}
         validate={this.validate}
         onSubmit={this.handleSubmit}
