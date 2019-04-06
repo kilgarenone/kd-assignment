@@ -1,53 +1,29 @@
-export function randomString(length = 16) {
-  const charset =
-    "0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._~";
-  let result = "";
+import * as Yup from "yup";
 
-  while (length > 0) {
-    const bytes = new Uint8Array(16);
-    const random = (window.crypto || window.msCrypto).getRandomValues(bytes);
+export function validationSchemaConstructor(question) {
+  let schema = Yup.string();
 
-    // eslint-disable-next-line no-loop-func
-    random.forEach(c => {
-      if (length === 0) {
-        return;
-      }
-      if (c < charset.length) {
-        result += charset[c];
-        length--;
-      }
-    });
+  if (!question.validation_rules) {
+    return null;
   }
-  return result;
+
+  question.validation_rules.forEach(rule => {
+    if ("is_required" in rule) {
+      schema = schema.required("Hey man nice shot");
+    } else if ("min_char_length" in rule) {
+      schema = schema.min(
+        rule.min_char_length,
+        `Mininum character is ${rule.min_char_length}`
+      );
+    }
+  });
+
+  return schema;
 }
 
-export function setItemInLocalStorage(name, item) {
-  window.localStorage.setItem(name, item);
-}
-
-export function getCookie(name) {
-  return document.cookie.split("; ").reduce((r, v) => {
-    const parts = v.split("=");
-    return parts[0] === name ? decodeURIComponent(parts[1]) : r;
-  }, "");
-}
-
-export function parseUrlHash(urlHash) {
-  const hash = urlHash.substr(1);
-
-  return hash.split("&").reduce((acc, item) => {
-    const [key, value] = item.split("=");
-    acc[key] = value;
+export function initialValuesConstructor(questions) {
+  return questions.reduce((acc, curr) => {
+    acc[curr.id] = "";
     return acc;
   }, {});
-}
-
-export function toHexCode(str) {
-  let result = "";
-
-  for (let i = 0; i < str.length; i++) {
-    result += str.charCodeAt(i).toString(16);
-  }
-
-  return result;
 }
