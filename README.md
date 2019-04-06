@@ -38,3 +38,4 @@ Here is the [webpack-related configuration](https://github.com/kilgarenone/kd-as
 - [ ] Offline mode
 - [ ] Integration testing
 - [ ] Build a kitchen sink to showcase and document the UI components
+- [ ] Refine the 'progress bar' behaviour
