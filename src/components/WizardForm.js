@@ -50,15 +50,6 @@ class Wizard extends Component {
       error[name] = e.message;
       return error;
     }
-    // return activePage.props.validate ? activePage.props.validate(values) : {};
-    // try {
-    //   if (!activePage.props.validationSchema) {
-    //     return {};
-    //   }
-    //   await activePage.props.validationSchema.validate(values);
-    // } catch (err) {
-    //   console.log("err", err);
-    // }
   };
 
   handleSubmit = (values, bag) => {
@@ -81,19 +72,13 @@ class Wizard extends Component {
   };
 
   render() {
-    const {
-      children,
-      idForFormEl,
-      prevAndNextBtnClassName,
-      validationSchema
-    } = this.props;
+    const { children, idForFormEl, prevAndNextBtnClassName } = this.props;
     const { page, values } = this.state;
     const activePage = React.Children.toArray(children)[page];
     const isLastPage = page === React.Children.count(children) - 1;
 
     return (
       <Formik
-        // validationSchema={validationSchema}
         initialValues={values}
         validate={this.validate}
         onSubmit={this.handleSubmit}
