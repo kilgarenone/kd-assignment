@@ -13,7 +13,7 @@ import spacing from "../css/spacing";
 import {
   initialValuesConstructor,
   validationSchemaConstructor
-} from "../utils";
+} from "../utils/functions";
 
 const QUESTIONS = {
   title: "This is a title for the form Header",

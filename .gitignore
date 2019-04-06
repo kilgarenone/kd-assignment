@@ -1,7 +1,5 @@
 node_modules
 build
-server_build
-public
 .env.*
 !.env.example
 .DS_Store

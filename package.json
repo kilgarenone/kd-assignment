@@ -44,7 +44,6 @@
     "html-webpack-plugin": "^3.2.0",
     "mini-css-extract-plugin": "^0.5.0",
     "node-sass": "^4.11.0",
-    "nodemon": "^1.18.9",
     "npm-run-all": "^4.1.5",
     "postcss-custom-properties": "^8.0.9",
     "postcss-loader": "^3.0.0",
@@ -72,16 +71,12 @@
     "@emotion/core": "^10.0.10",
     "@emotion/styled": "^10.0.10",
     "@reach/router": "^1.2.1",
-    "body-parser": "^1.18.3",
-    "boom": "^7.3.0",
     "formik": "^1.5.2",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "react-dom-confetti": "^0.1.0",
     "react-redux": "^6.0.0",
     "redux": "^4.0.1",
-    "redux-thunk": "^2.3.0",
-    "styled-jsx": "^3.2.0",
     "yup": "^0.26.10"
   }
 }
