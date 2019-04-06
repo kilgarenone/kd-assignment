@@ -10,7 +10,9 @@ https://upbeat-hypatia-60c204.netlify.com/
 
 ## UI component library
 
-Adapted a [bunch of components](https://github.com/kilgarenone/towernest/tree/master/src/components) from my previous side-project that did a similar multi-step form feature.
+Adapted a [bunch of reusable components](https://github.com/kilgarenone/towernest/tree/master/src/components) from my previous side-project that did a similar multi-step form feature.
+
+They reside in `src/components`.
 
 ## Third-party library
 
@@ -29,3 +31,8 @@ The build setup that uses Webpack is adapted from my other side-project(private 
 Here is the main [`webpack.config.js`](https://github.com/kilgarenone/kd-assignment/blob/master/webpack.config.js) file.
 
 Here is the [webpack-related configuration](https://github.com/kilgarenone/kd-assignment/tree/master/config/webpack) broken into `dev` and `prod` mode.
+
+### TODO
+
+- [ ] UI/UX polishing
+- [ ] Offline mode
