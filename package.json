@@ -1,23 +1,16 @@
 {
-  "name": "formbuilder",
+  "name": "kd-assignment",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npm-run-all --parallel start:client start:server",
-    "start:client": "cross-env NODE_ENV=development webpack-dev-server",
-    "start:server": "npm-run-all --parallel dev:build-server dev:start",
+    "start": "cross-env NODE_ENV=development webpack-dev-server",
     "build": "cross-env NODE_ENV=production webpack",
-    "dev:build-server": "cross-env NODE_ENV=development webpack --config server/webpack.server.js --mode=development --watch",
-    "dev:start": "nodemon -r dotenv/config server_build/index.js dotenv_config_path=.env.server",
-    "reset": "rm -rf node_modules && rm -rf package-lock.json && npm i",
-    "lint": "eslint ./src/**/**.js",
-    "lint:fix": "eslint ./src/**/**.js --fix",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Kheoh Yee Wei",
+  "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.2.2",
     "@babel/plugin-proposal-class-properties": "^7.2.3",
