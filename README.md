@@ -10,15 +10,13 @@ https://upbeat-hypatia-60c204.netlify.com/
 
 ## UI component library
 
-Adapted a bunch from my previous side-project that did a similar multi-step form feature.
-https://github.com/kilgarenone/towernest/tree/master/src/components
+Adapted a [bunch of components](https://github.com/kilgarenone/towernest/tree/master/src/components) from my previous side-project that did a similar multi-step form feature.
 
 ## Third-party library
 
 **[Formik](https://github.com/jaredpalmer/formik)**
 
-Has a helpful multi-step form example as a starting point.
-https://github.com/jaredpalmer/formik/blob/master/examples/MultistepWizard.js
+Has a helpful [multi-step form example](https://github.com/jaredpalmer/formik/blob/master/examples/MultistepWizard.js) as a starting point.
 
 **[Yup](https://github.com/jquense/yup)**
 
@@ -28,8 +26,6 @@ Used to construct form validation schema.
 
 The build setup that uses Webpack is adapted from my other side-project(private repo).
 
-Here is the main `webpack.config.js` file:
-https://github.com/kilgarenone/kd-assignment/blob/master/webpack.config.js
+Here is the main [`webpack.config.js`](https://github.com/kilgarenone/kd-assignment/blob/master/webpack.config.js) file.
 
-Here is the configuration broken into `dev` and `prod` mode:
-https://github.com/kilgarenone/kd-assignment/tree/master/config/webpack
+Here is the [webpack-related configuration](https://github.com/kilgarenone/kd-assignment/tree/master/config/webpack) broken into `dev` and `prod` mode.
