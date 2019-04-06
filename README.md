@@ -16,10 +16,12 @@ https://github.com/kilgarenone/towernest/tree/master/src/components
 ## Third-party library
 
 **[Formik](https://github.com/jaredpalmer/formik)**
+
 Has a helpful multi-step form example as a starting point.
 https://github.com/jaredpalmer/formik/blob/master/examples/MultistepWizard.js
 
 **[Yup](https://github.com/jquense/yup)**
+
 Used to construct form validation schema.
 
 ## Build
