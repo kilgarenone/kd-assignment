@@ -5,6 +5,7 @@ import { Provider } from "react-redux";
 import Questionnaire from "./pages/Questionnaire";
 import configureStore from "./redux/configureStore";
 import "./index.scss";
+import Results from "./pages/Results";
 
 const store = configureStore();
 
@@ -13,6 +14,7 @@ const renderApp = () =>
     <Provider store={store}>
       <Router>
         <Questionnaire path="/" />
+        <Results path="results" />
       </Router>
     </Provider>,
     document.getElementById("root")
