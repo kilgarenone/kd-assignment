@@ -9,7 +9,7 @@ export function validationSchemaConstructor(question) {
 
   question.validation_rules.forEach(rule => {
     if ("is_required" in rule) {
-      schema = schema.required("Hey man nice shot");
+      schema = schema.required("This field is required");
     } else if ("min_char_length" in rule) {
       schema = schema.min(
         rule.min_char_length,
